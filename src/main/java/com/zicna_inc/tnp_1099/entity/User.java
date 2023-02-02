@@ -30,6 +30,9 @@ public class User {
 
 
 
+    public User() {
+    }
+
     public User(Long id, String email, Date date_of_birth, Gender gender) {
         this.id = id;
         this.email = email;
