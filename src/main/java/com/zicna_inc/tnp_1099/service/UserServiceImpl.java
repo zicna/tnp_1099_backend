@@ -3,12 +3,13 @@ package com.zicna_inc.tnp_1099.service;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zicna_inc.tnp_1099.entity.User;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
+import com.zicna_inc.tnp_1099.exceptions.NoUserException;
+
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
@@ -22,11 +23,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUser(Long id) {
         Optional<User> optUser = userRepository.findById(id);
-        if(optUser.isPresent()){
-            return optUser.get();
-        }else{
-            throw new RuntimeException();
-        }
+       return unwrapUser(optUser, id);
     }
 
     @Override
@@ -37,17 +34,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        // userRepository.findById(id);
     }
 
-    // private User findUserById(Long id){
-    //     Optional<User> optionalUser = userRepository.findById(id);
-    //     if(optionalUser.isPresent()){
-    //         return optionalUser.get();
-    //     }else{
-    //         throw new RuntimeException();
-    //     }
-    // }
+    private User unwrapUser(Optional<User> wrapedUser, Long id){
+        if(wrapedUser.isPresent()) return wrapedUser.get();
+        else throw new NoUserException(id);
+    }
 
 
 }
