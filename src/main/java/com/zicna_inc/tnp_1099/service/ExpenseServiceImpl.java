@@ -1,5 +1,7 @@
 package com.zicna_inc.tnp_1099.service;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,11 @@ public class ExpenseServiceImpl implements ExpenseService{
         User user = userService.getUser(user_id);
         expense.setUser(user);
         return expenseRepo.save(expense);
+    }
+    
+    public List<Expense> getAllUserExpenses(Long user_id){
+        userService.getUser(user_id);
+        return new ArrayList<Expense>(expenseRepo.findByUserId(user_id));
     }
     
 }

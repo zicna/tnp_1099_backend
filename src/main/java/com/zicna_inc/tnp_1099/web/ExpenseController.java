@@ -3,6 +3,9 @@ package com.zicna_inc.tnp_1099.web;
 import com.zicna_inc.tnp_1099.entity.Expense;
 import com.zicna_inc.tnp_1099.service.ExpenseService;
 
+import java.util.*;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +23,11 @@ public class ExpenseController {
     @PostMapping("/user/{user_id}/expense")
     public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @PathVariable Long user_id){
         return new ResponseEntity<>(expenseService.saveExpense(expense, user_id), HttpStatus.CREATED);
+    }
+
+    @GetMapping("user/{user_id}/expense/all")
+    public ResponseEntity<List<Expense>> getAllUserExpenses(@PathVariable Long user_id){
+        return new ResponseEntity<>(expenseService.getAllUserExpenses(user_id), HttpStatus.OK);
     }
     
 }
