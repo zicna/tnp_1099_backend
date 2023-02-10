@@ -24,11 +24,14 @@ public class RiderServiceImpl implements RiderService{
         return unwrapedRider(wrapedRider, id);
     }
 
+    public void deleteRider(Long id){
+        Optional<Rider> wrapedRider = riderRepo.findById(id);
+        if(wrapedRider.isPresent()) riderRepo.deleteById(id);
+        else throw new NoRiderException(id);
+    }
+
     private Rider unwrapedRider(Optional<Rider> optional, Long id){
         if(optional.isPresent()) return optional.get();
         else throw new NoRiderException(id);
     }
-
-    
-    
 }
