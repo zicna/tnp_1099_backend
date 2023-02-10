@@ -34,7 +34,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteUser(Long id) {
-        // userRepository.findById(id);
+        Optional<User> optUser = userRepository.findById(id);
+       if(optUser.isPresent())userRepository.deleteById(id);
+       else throw new NoUserException(id);
     }
 
     private User unwrapUser(Optional<User> wrapedUser, Long id){
