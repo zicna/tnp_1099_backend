@@ -1,5 +1,8 @@
 package com.zicna_inc.tnp_1099.exceptions;
 
+// TODO: add timestamp private field
+// TODO: format timestamp field to: MM-dd-YYYY hh:mm
+
 public class ErrorResponse {
     private String message;
 

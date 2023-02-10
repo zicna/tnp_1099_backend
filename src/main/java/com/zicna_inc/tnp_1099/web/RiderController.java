@@ -11,6 +11,10 @@ import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.service.RiderService;
 
 
+// TODO: add custom exception for Rider not found
+// TODO: add custom method to handle NoRiderFound exception in AppExceptionHandler
+
+
 @RestController
 public class RiderController {
     
