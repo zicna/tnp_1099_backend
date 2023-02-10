@@ -11,6 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+// TODO create new entity 'Expense' fully loaded 
+// TODO connect User and Expense with one to many mapper 
+
 @Entity
 @Table(name="users")
 public class User {
