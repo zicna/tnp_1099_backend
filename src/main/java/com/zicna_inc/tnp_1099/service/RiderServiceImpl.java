@@ -1,4 +1,7 @@
 package com.zicna_inc.tnp_1099.service;
+import  com.zicna_inc.tnp_1099.exceptions.NoRiderException;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,5 +17,18 @@ public class RiderServiceImpl implements RiderService{
     public Rider saveRider(Rider rider){
         return riderRepo.save(rider);
     }
+
+    @Override
+    public Rider getRider(Long id) {
+        Optional<Rider> wrapedRider = riderRepo.findById(id);
+        return unwrapedRider(wrapedRider, id);
+    }
+
+    private Rider unwrapedRider(Optional<Rider> optional, Long id){
+        if(optional.isPresent()) return optional.get();
+        else throw new NoRiderException(id);
+    }
+
+    
     
 }
