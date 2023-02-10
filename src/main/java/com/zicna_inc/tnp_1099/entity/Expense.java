@@ -9,14 +9,15 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Expense {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    //* private Long user_id;
-
+    
     @Enumerated(value=EnumType.STRING)
     private ExpenseType type;
     @Column
@@ -26,16 +27,28 @@ public class Expense {
     @Column
     private String description;
 
+    @ManyToOne(optional=false)
+    @JoinColumn(name="user_id", referencedColumnName="id")
+    private User user;
+
 
     public Expense() {
     }
 
-    public Expense(Long id, ExpenseType type, Double amount, Date date, String description) {
+    public Expense(Long id, ExpenseType type, Double amount, String description) {
         this.id = id;
         this.type = type;
         this.amount = amount;
-        this.date = date;
+        this.date = new Date();
         this.description = description;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -66,8 +79,8 @@ public class Expense {
         return this.date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate() {
+        this.date = new Date();
     }
 
     public String getDescription() {
@@ -93,9 +106,9 @@ public class Expense {
         return this;
     }
 
-    public Expense date(Date date) {
-        setDate(date);
-        return this;
-    }
+    // public Expense date(Date date) {
+    //     setDate(date);
+    //     return this;
+    // }
 
 }
