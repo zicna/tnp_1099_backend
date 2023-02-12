@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+// TODO  add method(controller, service, serviceImpl, repo) to alter Rider
+
 @Entity
 public class Rider {
     @Id

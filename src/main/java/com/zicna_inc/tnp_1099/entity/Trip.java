@@ -17,6 +17,9 @@ import jakarta.persistence.Id;
     //     name="PLATFORM",
     //     discriminatorType= DiscriminatorType.STRING
     // )
+// TODO  add method to alter Trip
+// TODO  add method to delete Trip
+
     @Entity
 public class Trip {
 

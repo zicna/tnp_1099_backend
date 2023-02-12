@@ -31,6 +31,9 @@ public class Expense {
     @JoinColumn(name="user_id", referencedColumnName="id")
     private User user;
 
+// TODO  add method(controller, service, serviceImpl, repo) to alter Expense
+// TODO  add method to delete Expense
+
 
     public Expense() {
     }
