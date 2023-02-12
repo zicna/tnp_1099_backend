@@ -7,5 +7,6 @@ import java.util.*;
 public interface ExpenseService {
     public Expense saveExpense(Expense expense, Long user_id);
     public List<Expense> getAllUserExpenses(Long user_id);
+    public Expense getExpense(Long user_id, Long id);
     
 }
