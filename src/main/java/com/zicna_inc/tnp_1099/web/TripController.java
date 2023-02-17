@@ -25,9 +25,10 @@ public class TripController {
         return new ResponseEntity<>(trip, HttpStatus.OK);
     }
 
-    @PostMapping("/trip")
-    public ResponseEntity<Trip> addTrip(@RequestBody Trip trip){
-        return new ResponseEntity<>(tripService.saveTrip(trip), HttpStatus.CREATED);
+    // ? this method might go to user controller
+    @PostMapping("/user/{id}/trip")
+    public ResponseEntity<Trip> addTrip(@RequestBody Trip trip, @PathVariable Long id){
+        return new ResponseEntity<>(tripService.saveTrip(trip, id), HttpStatus.CREATED);
     }
     
 }
