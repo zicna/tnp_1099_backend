@@ -28,13 +28,13 @@ public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final Long id;
+    private Long id;
 
     @Column
-    private  final Long distance;
+    private  Long distance;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private  final Platform platform;
+    private  Platform platform;
 
     @ManyToOne(optional=false)
     @JoinColumn(name="user_id")
@@ -52,7 +52,25 @@ public class Trip {
         this.user = user;
         this.rider = rider;
     }
+
+    public Trip(){};
     
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Rider getRider() {
+        return this.rider;
+    }
+
+    public void setRider(Rider rider) {
+        this.rider = rider;
+    }
 
     public Long getId() {
         return this.id;
