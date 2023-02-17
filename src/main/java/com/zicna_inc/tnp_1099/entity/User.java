@@ -45,15 +45,10 @@ public class User {
     @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
     Set<Trip> trips;
 
-
-
-
-
     public User() {
     }
 
-    public User(Long id, String email, Date date_of_birth, Gender gender) {
-        this.id = id;
+    public User(String email, Date date_of_birth, Gender gender) {
         this.email = email;
         this.date_of_birth = date_of_birth;
         this.gender = gender;

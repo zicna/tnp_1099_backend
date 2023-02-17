@@ -35,8 +35,7 @@ public class Rider {
     public Rider() {
     }
 
-    public Rider(Long id, String email, Gender gender) {
-        this.id = id;
+    public Rider(String email, Gender gender) {
         this.email = email;
         this.gender = gender;
     }
