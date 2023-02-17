@@ -1,5 +1,9 @@
 package com.zicna_inc.tnp_1099.entity;
 
+import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -7,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 // TODO  add method(controller, service, serviceImpl, repo) to alter Rider
 
@@ -21,6 +26,10 @@ public class Rider {
     @Column
     @Enumerated(value= EnumType.STRING)
     private Gender gender;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="rider", cascade=CascadeType.ALL)
+    Set<Trip> trips;
 
 
     public Rider() {

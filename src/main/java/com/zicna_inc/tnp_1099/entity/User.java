@@ -1,7 +1,12 @@
 package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,9 +14,11 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 // TODO  add method to alter user
+// TODO  add a bidirectional relationship between expenses and user
 
 @Entity
 @Table(name="users")
@@ -29,6 +36,16 @@ public class User {
     @Column
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+    List<Expense> expense;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+    Set<Trip> trips;
+
+
 
 
 
