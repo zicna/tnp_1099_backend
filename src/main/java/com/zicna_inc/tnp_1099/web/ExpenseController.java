@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;;
+import org.springframework.http.ResponseEntity;
+
+// TODO: to be able to get user based of expense 1 (expense/{id}/user)
 
 @RestController
 public class ExpenseController {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.zicna_inc.tnp_1099.entity.Trip;
 import com.zicna_inc.tnp_1099.entity.User;
+import com.zicna_inc.tnp_1099.exceptions.NoTripException;
 import com.zicna_inc.tnp_1099.entity.Gender;
 import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.repository.TripRepository;
@@ -38,7 +39,7 @@ public class TripServiceImpl implements TripService{
         if(op.isPresent()){
             return op.get();
         }else{
-            throw new RuntimeException();
+            throw new NoTripException(id);
         }
     }
 
