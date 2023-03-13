@@ -13,7 +13,7 @@ import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.repository.TripRepository;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
 import com.zicna_inc.tnp_1099.repository.RiderRepository;
-import com.zicna_inc.tnp_1099.service.RiderService;
+// import com.zicna_inc.tnp_1099.service.RiderService;
 
 @Service
 public class TripServiceImpl implements TripService{

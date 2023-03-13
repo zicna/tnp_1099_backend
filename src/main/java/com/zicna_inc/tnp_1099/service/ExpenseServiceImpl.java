@@ -48,12 +48,20 @@ public class ExpenseServiceImpl implements ExpenseService{
         expense.setUser(user);
         if (oldExpense.getId().equals(expense.getId())) return expenseRepo.save(expense);
         else throw new NoExpenseException(id, oldExpense);
-
     }
+    
+    @Override
+    public void deleteExpense(Long user_id, Long id) {
+        // ! guard clause to trigger NoUserException in case user_id is non existing
+        userService.getUser(user_id);
+        Optional<Expense> wrappedExpense = expenseRepo.findById(id);
+        if(wrappedExpense.isPresent()) expenseRepo.deleteById(id);
+        else throw new NoExpenseException(id);
+        
+    }
+
     private Expense unwrapExpense(Optional<Expense> wrappedExpense, Long id){
         if(wrappedExpense.isPresent()) return wrappedExpense.get();
         else throw new NoExpenseException(id);
     }
-    
-    
 }

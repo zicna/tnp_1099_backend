@@ -9,5 +9,5 @@ public interface ExpenseService {
     public List<Expense> getAllUserExpenses(Long user_id);
     public Expense getExpense(Long user_id, Long id);
     public Expense updateExpense(Long user_id, Long id, Expense expense);
-    
+    public void deleteExpense(Long user_id, Long id);
 }
