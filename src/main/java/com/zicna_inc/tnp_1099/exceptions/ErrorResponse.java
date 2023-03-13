@@ -1,14 +1,19 @@
 package com.zicna_inc.tnp_1099.exceptions;
 
-// TODO: add timestamp private field
-// TODO: format timestamp field to: MM-dd-YYYY hh:mm
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 public class ErrorResponse {
     private String message;
+    @JsonFormat(pattern = "MM/dd/YYYY; HH:mm:ss")
+    private Date timestamp;
 
 
     public ErrorResponse(String message) {
         this.message = message;
+        this.timestamp = new Date();
     }
 
     public String getMessage() {
@@ -17,6 +22,14 @@ public class ErrorResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     
