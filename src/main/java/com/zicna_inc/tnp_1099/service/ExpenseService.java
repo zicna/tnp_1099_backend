@@ -8,5 +8,6 @@ public interface ExpenseService {
     public Expense saveExpense(Expense expense, Long user_id);
     public List<Expense> getAllUserExpenses(Long user_id);
     public Expense getExpense(Long user_id, Long id);
+    public Expense updateExpense(Long user_id, Long id, Expense expense);
     
 }

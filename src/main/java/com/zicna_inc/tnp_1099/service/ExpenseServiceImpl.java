@@ -35,15 +35,25 @@ public class ExpenseServiceImpl implements ExpenseService{
     public Expense getExpense(Long user_id, Long id){
         // ! guard clause to trigger NoUserException in case user_id is non existing
         userService.getUser(user_id);
-        // ! Do not thing we need to instantiated new user 
+        // ! Do not think we need to instantiated new user 
         // User user = userService.getUser(user_id);
         Optional<Expense> wrappedExpense = expenseRepo.findById(id);
         return unwrapExpense(wrappedExpense, id);
     }
+    
+    @Override
+    public Expense updateExpense(Long user_id, Long id, Expense expense) {
+        User user = userService.getUser(user_id);
+        Expense oldExpense =  getExpense(user_id, id);
+        expense.setUser(user);
+        if (oldExpense.getId().equals(expense.getId())) return expenseRepo.save(expense);
+        else throw new NoExpenseException(id, oldExpense);
 
+    }
     private Expense unwrapExpense(Optional<Expense> wrappedExpense, Long id){
         if(wrappedExpense.isPresent()) return wrappedExpense.get();
         else throw new NoExpenseException(id);
     }
+    
     
 }
