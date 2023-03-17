@@ -17,7 +17,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-// TODO  add method to alter user
 // TODO  add a bidirectional relationship between expenses and user
 
 @Entity

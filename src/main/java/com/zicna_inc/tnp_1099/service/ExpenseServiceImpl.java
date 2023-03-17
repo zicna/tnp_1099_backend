@@ -9,7 +9,10 @@ import com.zicna_inc.tnp_1099.entity.Expense;
 import com.zicna_inc.tnp_1099.entity.User;
 import com.zicna_inc.tnp_1099.repository.ExpenseRepository;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
-import com.zicna_inc.tnp_1099.exceptions.NoExpenseException;;
+import com.zicna_inc.tnp_1099.exceptions.NoExpenseException;
+
+
+// TODO: REFACTOR!!!
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService{

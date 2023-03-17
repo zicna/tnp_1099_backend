@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zicna_inc.tnp_1099.entity.Trip;
 import com.zicna_inc.tnp_1099.service.TripService;
 
-//* */ TODO: to be able to get user or rider based of trip 1 (trip/{id})
-//* */ TODO: handle all the bad requests (new custom exception, exception handler,..)
-
 
 @RestController
 public class TripController {
