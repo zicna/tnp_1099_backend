@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
+// TODO: Add new field, 'milage' 
 public class Expense {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
