@@ -1,6 +1,9 @@
 package com.zicna_inc.tnp_1099.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +17,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.zicna_inc.tnp_1099.entity.User;
+import com.zicna_inc.tnp_1099.service.ExpenseService;
 import com.zicna_inc.tnp_1099.service.UserService;
 
 @RestController
@@ -24,6 +29,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ExpenseService expenseService;
+
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/user")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
@@ -31,9 +39,11 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
-        User user = userService.getUser(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<Object> getUser(@PathVariable Long id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", userService.getUser(id));
+        map.put("expenses", expenseService.getAllUserExpenses(id));
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @GetMapping("/users")
