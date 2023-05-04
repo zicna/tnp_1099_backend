@@ -2,13 +2,41 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+// @Table(name = "cars")
 public class Car {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String make;
+    @Column
     private String model;
+    @Column(name="year")
     private Integer year;
+    @Column
     private String vin;
+    @Column
     private String color;
+    @Column(name="uber_type")
+    @Enumerated(value = EnumType.STRING)
     private UberType type;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     public Car() {
     }
@@ -20,6 +48,10 @@ public class Car {
         this.vin = vin;
         this.color = color;
         this.type = type;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getMake() {
@@ -100,33 +132,11 @@ public class Car {
         return this;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Car)) {
-            return false;
-        }
-        Car car = (Car) o;
-        return Objects.equals(make, car.make) && Objects.equals(model, car.model) && Objects.equals(year, car.year)
-                && Objects.equals(vin, car.vin) && Objects.equals(color, car.color) && Objects.equals(type, car.type);
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(make, model, year, vin, color, type);
+    public User getUser() {
+        return user;
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-                " make='" + getMake() + "'" +
-                ", model='" + getModel() + "'" +
-                ", year='" + getYear() + "'" +
-                ", vin='" + getVin() + "'" +
-                ", color='" + getColor() + "'" +
-                ", type='" + getType() + "'" +
-                "}";
-    }
-
 }

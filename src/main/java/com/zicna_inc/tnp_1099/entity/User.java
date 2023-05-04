@@ -20,12 +20,12 @@ import jakarta.persistence.Table;
 // TODO  add a bidirectional relationship between expenses and user
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column
     private String email;
 
@@ -37,12 +37,16 @@ public class User {
     private Gender gender;
 
     @JsonIgnore
-    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Expense> expense;
-    
+
     @JsonIgnore
-    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     Set<Trip> trips;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Car> cars;
 
     public User() {
     }
@@ -52,7 +56,6 @@ public class User {
         this.date_of_birth = date_of_birth;
         this.gender = gender;
     }
-
 
     public Long getId() {
         return this.id;
