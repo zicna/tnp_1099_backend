@@ -1,7 +1,5 @@
 package com.zicna_inc.tnp_1099.entity;
 
-import java.util.Objects;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
 // @Table(name = "cars")
@@ -24,13 +21,13 @@ public class Car {
     private String make;
     @Column
     private String model;
-    @Column(name="year")
+    @Column(name = "year")
     private Integer year;
     @Column
     private String vin;
     @Column
     private String color;
-    @Column(name="uber_type")
+    @Column(name = "uber_type")
     @Enumerated(value = EnumType.STRING)
     private UberType type;
 
