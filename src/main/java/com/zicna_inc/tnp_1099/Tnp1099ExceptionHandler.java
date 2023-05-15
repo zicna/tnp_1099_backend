@@ -2,11 +2,13 @@ package com.zicna_inc.tnp_1099;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.zicna_inc.tnp_1099.exceptions.NoUserException;
+import com.zicna_inc.tnp_1099.exceptions.WrongCarInputExc;
 import com.zicna_inc.tnp_1099.exceptions.WrongUserInputExc;
 import com.zicna_inc.tnp_1099.exceptions.NoRiderException;
 import com.zicna_inc.tnp_1099.exceptions.NoTripException;
@@ -42,6 +44,12 @@ public class Tnp1099ExceptionHandler {
 
     @ExceptionHandler(NoTripException.class)
     public ResponseEntity<Object> noTripFound(NoTripException ex){
+        ErrorResponse error = new ErrorResponse(ex.getLocalizedMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(WrongCarInputExc.class)
+    public ResponseEntity<Object> wrongCarInput(WrongCarInputExc ex){
         ErrorResponse error = new ErrorResponse(ex.getLocalizedMessage());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
