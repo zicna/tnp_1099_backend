@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.zicna_inc.tnp_1099.entity.User;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
+import com.zicna_inc.tnp_1099.request.UserRequest;
 import com.zicna_inc.tnp_1099.exceptions.NoUserException;
 
 @Service
@@ -16,7 +17,8 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
 
     @Override
-    public User saveUser(User user) {
+    public User saveUser(UserRequest userRequest) {
+        User user = new User(userRequest.getEmail(), userRequest.getDate_of_birth(), userRequest.getGender());
         return userRepository.save(user);
     }
 
