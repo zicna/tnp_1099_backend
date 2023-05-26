@@ -30,8 +30,6 @@ public class User {
     private Long id;
 
     @Column
-    @Email
-    @NotBlank
     private String email;
 
     @Column

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,14 +38,25 @@ public class UserController {
     @Autowired
     ExpenseService expenseService;
 
-// TODO: alter WrongUserInputExc.java to get specific error message based of field that failed validation
-// TODO: add new UserRequest Entity for validation()
+    // TODO: alter WrongUserInputExc.java to get specific error message based of
+    // field that failed validation
+    // TODO: add new UserRequest Entity for validation()
 
+    // ! Old way handeling Exception with custom exception and BindingResult
+    // @CrossOrigin(origins = "http://localhost:3000")
+    // @PostMapping("/user")
+    // public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest
+    // userRequest, BindingResult result) {
+    // if (result.hasErrors())
+    // throw new WrongUserInputExc();
+    // return new ResponseEntity<>(userService.saveUser(userRequest),
+    // HttpStatus.CREATED);
+    // }
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/user")
-    public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest userRequest, BindingResult result) {
-        if(result.hasErrors()) throw new WrongUserInputExc();
-        return new ResponseEntity<>(userService.saveUser(userRequest), HttpStatus.CREATED);
+    public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest userRequest) {
+        return new ResponseEntity<>(userService.saveUser(userRequest),
+                HttpStatus.CREATED);
     }
 
     @GetMapping("/user/{id}")
