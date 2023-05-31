@@ -6,6 +6,7 @@ import com.zicna_inc.tnp_1099.request.RiderRequest;
 
 public interface RiderService {
     public Rider saveRider(RiderRequest riderRequest);
+    public Rider saveRider(Rider rider);
     public Rider getRider(Long id);
     public void deleteRider(Long id);
 }

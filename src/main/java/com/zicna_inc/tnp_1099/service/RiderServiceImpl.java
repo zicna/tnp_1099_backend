@@ -20,6 +20,10 @@ public class RiderServiceImpl implements RiderService{
         return riderRepo.save(rider);
     }
 
+    public Rider saveRider(Rider rider){
+        return riderRepo.save(rider);
+    }
+
     @Override
     public Rider getRider(Long id) {
         Optional<Rider> wrapedRider = riderRepo.findById(id);
