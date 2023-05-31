@@ -4,6 +4,8 @@ import com.zicna_inc.tnp_1099.entity.Expense;
 import com.zicna_inc.tnp_1099.request.ExpenseRequest;
 import com.zicna_inc.tnp_1099.service.ExpenseService;
 
+import jakarta.validation.Valid;
+
 import java.util.*;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,7 +28,7 @@ public class ExpenseController {
     ExpenseService expenseService;
 
     @PostMapping("/user/{user_id}/expense")
-    public ResponseEntity<Expense> saveExpense(@RequestBody ExpenseRequest expenseRequest, @PathVariable Long user_id){
+    public ResponseEntity<Expense> saveExpense(@RequestBody @Valid ExpenseRequest expenseRequest, @PathVariable Long user_id){
         return new ResponseEntity<>(expenseService.saveExpense(expenseRequest, user_id), HttpStatus.CREATED);
     }
 

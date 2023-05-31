@@ -4,11 +4,14 @@ import java.util.Date;
 
 import com.zicna_inc.tnp_1099.enums.ExpenseType;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ExpenseRequest {
     private ExpenseType type;
-    @NotBlank(message = "amount can not be blank")
+    @Min(value = 0, message = "amount must exist and can not be less then 0")
+    @NotNull(message = "amount must exist and can not be less then 0")
     private Double amount;
     private Date date;
     @NotBlank(message = "description can not be blank")
