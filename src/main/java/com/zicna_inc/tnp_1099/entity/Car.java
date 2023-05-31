@@ -1,6 +1,5 @@
 package com.zicna_inc.tnp_1099.entity;
 
-import org.hibernate.validator.constraints.Range;
 
 import com.zicna_inc.tnp_1099.enums.UberType;
 import com.zicna_inc.tnp_1099.request.CarRequest;
@@ -14,8 +13,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 // @Table(name = "cars")
@@ -25,24 +22,18 @@ public class Car {
     private Long id;
 
     @Column
-    @NotBlank
     private String make;
 
     @Column
-    @NotBlank
     private String model;
 
     @Column(name = "year")
-    @NotNull
-    @Range(min = 2000)
     private Integer year;
 
     @Column
-    @NotBlank
     private String vin;
 
     @Column
-    @NotBlank
     private String color;
     @Column(name = "uber_type")
     @Enumerated(value = EnumType.STRING)

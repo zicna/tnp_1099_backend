@@ -2,6 +2,7 @@ package com.zicna_inc.tnp_1099.request;
 
 import com.zicna_inc.tnp_1099.enums.UberType;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 public class CarRequest {
@@ -10,6 +11,7 @@ public class CarRequest {
     @NotBlank(message = "model can not be blank")
     private String model;
     @NotBlank(message = "year can not be blank")
+    @Min(value = 2000, message = "car can not be older than 2000")
     private Integer year;
     @NotBlank(message = "vin can not be blank")
     private String vin;
