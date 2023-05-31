@@ -1,6 +1,7 @@
 package com.zicna_inc.tnp_1099.web;
 
 import com.zicna_inc.tnp_1099.entity.Expense;
+import com.zicna_inc.tnp_1099.request.ExpenseRequest;
 import com.zicna_inc.tnp_1099.service.ExpenseService;
 
 import java.util.*;
@@ -25,8 +26,8 @@ public class ExpenseController {
     ExpenseService expenseService;
 
     @PostMapping("/user/{user_id}/expense")
-    public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @PathVariable Long user_id){
-        return new ResponseEntity<>(expenseService.saveExpense(expense, user_id), HttpStatus.CREATED);
+    public ResponseEntity<Expense> saveExpense(@RequestBody ExpenseRequest expenseRequest, @PathVariable Long user_id){
+        return new ResponseEntity<>(expenseService.saveExpense(expenseRequest, user_id), HttpStatus.CREATED);
     }
 
     @GetMapping("user/{user_id}/expense/all")

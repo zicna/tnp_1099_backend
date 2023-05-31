@@ -2,6 +2,8 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Date;
 
+import com.zicna_inc.tnp_1099.request.ExpenseRequest;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,13 +15,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-// TODO: Add new field, 'milage' 
+// TODO: Add new field, 'milage'
 public class Expense {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Enumerated(value=EnumType.STRING)
+
+    @Enumerated(value = EnumType.STRING)
     private ExpenseType type;
     @Column
     private Double amount;
@@ -28,8 +30,8 @@ public class Expense {
     @Column
     private String description;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="user_id", referencedColumnName="id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     public Expense() {
@@ -41,6 +43,13 @@ public class Expense {
         this.amount = amount;
         this.date = new Date();
         this.description = description;
+    }
+
+    public Expense(ExpenseRequest source) {
+        this.type = source.getType();
+        this.amount = source.getAmount();
+        this.date = new Date();
+        this.description = source.getDescription();
     }
 
     public User getUser() {
@@ -107,8 +116,8 @@ public class Expense {
     }
 
     // public Expense date(Date date) {
-    //     setDate(date);
-    //     return this;
+    // setDate(date);
+    // return this;
     // }
 
 }
