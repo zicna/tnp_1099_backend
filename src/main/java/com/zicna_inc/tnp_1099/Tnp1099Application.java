@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.zicna_inc.tnp_1099.entity.Gender;
 import com.zicna_inc.tnp_1099.entity.User;
+import com.zicna_inc.tnp_1099.enums.Gender;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
 
 @SpringBootApplication

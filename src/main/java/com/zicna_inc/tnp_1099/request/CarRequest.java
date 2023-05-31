@@ -1,6 +1,6 @@
 package com.zicna_inc.tnp_1099.request;
 
-import com.zicna_inc.tnp_1099.entity.UberType;
+import com.zicna_inc.tnp_1099.enums.UberType;
 
 import jakarta.validation.constraints.NotBlank;
 

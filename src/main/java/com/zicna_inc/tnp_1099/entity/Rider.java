@@ -2,6 +2,7 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zicna_inc.tnp_1099.enums.Gender;
 import com.zicna_inc.tnp_1099.request.RiderRequest;
 
 import jakarta.persistence.CascadeType;

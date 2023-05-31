@@ -2,6 +2,7 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Date;
 
+import com.zicna_inc.tnp_1099.enums.ExpenseType;
 import com.zicna_inc.tnp_1099.request.ExpenseRequest;
 
 import jakarta.persistence.Column;

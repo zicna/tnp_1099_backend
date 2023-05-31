@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.zicna_inc.tnp_1099.entity.Trip;
 import com.zicna_inc.tnp_1099.entity.User;
+import com.zicna_inc.tnp_1099.enums.Gender;
 import com.zicna_inc.tnp_1099.exceptions.NoTripException;
-import com.zicna_inc.tnp_1099.entity.Gender;
 import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.repository.TripRepository;
 import com.zicna_inc.tnp_1099.repository.UserRepository;

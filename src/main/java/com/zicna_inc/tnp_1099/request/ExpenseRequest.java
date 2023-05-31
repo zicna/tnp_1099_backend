@@ -2,7 +2,7 @@ package com.zicna_inc.tnp_1099.request;
 
 import java.util.Date;
 
-import com.zicna_inc.tnp_1099.entity.ExpenseType;
+import com.zicna_inc.tnp_1099.enums.ExpenseType;
 
 import jakarta.validation.constraints.NotBlank;
 

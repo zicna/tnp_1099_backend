@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zicna_inc.tnp_1099.enums.Gender;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

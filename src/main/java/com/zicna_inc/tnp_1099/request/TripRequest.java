@@ -1,6 +1,6 @@
 package com.zicna_inc.tnp_1099.request;
 
-import com.zicna_inc.tnp_1099.entity.Platform;
+import com.zicna_inc.tnp_1099.enums.Platform;
 
 import jakarta.validation.constraints.NotBlank;
 

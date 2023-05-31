@@ -2,6 +2,7 @@ package com.zicna_inc.tnp_1099.entity;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.zicna_inc.tnp_1099.enums.UberType;
 import com.zicna_inc.tnp_1099.request.CarRequest;
 
 import jakarta.persistence.Column;

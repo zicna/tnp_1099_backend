@@ -1,6 +1,6 @@
 package com.zicna_inc.tnp_1099.request;
 
-import com.zicna_inc.tnp_1099.entity.Gender;
+import com.zicna_inc.tnp_1099.enums.Gender;
 
 import jakarta.validation.constraints.Email;
 // TODO: add custom validation for gender field (Gender Enum)

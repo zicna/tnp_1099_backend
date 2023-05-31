@@ -1,5 +1,6 @@
 package com.zicna_inc.tnp_1099.entity;
 
+import com.zicna_inc.tnp_1099.enums.Platform;
 import com.zicna_inc.tnp_1099.request.TripRequest;
 
 import jakarta.persistence.Column;
