@@ -1,5 +1,7 @@
 package com.zicna_inc.tnp_1099.entity;
 
+import com.zicna_inc.tnp_1099.request.TripRequest;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,6 +20,9 @@ import jakarta.persistence.ManyToOne;
 // TODO  add method to alter Trip
 // TODO  add method to delete Trip
 // TODO  implement many-to-many with new entity
+
+// TODO: Posible new fields: 1.AR(account Receivable), 2. AP(account payable)
+
 
     @Entity
 public class Trip {
@@ -50,6 +55,11 @@ public class Trip {
     }
 
     public Trip(){};
+
+    public Trip(TripRequest source){
+        this.distance = source.getDistance();
+        this.platform = source.getPlatform();
+    }
     
 
     public User getUser() {

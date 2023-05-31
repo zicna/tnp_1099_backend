@@ -12,6 +12,7 @@ import com.zicna_inc.tnp_1099.entity.Gender;
 import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.repository.TripRepository;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
+import com.zicna_inc.tnp_1099.request.TripRequest;
 import com.zicna_inc.tnp_1099.repository.RiderRepository;
 // import com.zicna_inc.tnp_1099.service.RiderService;
 
@@ -44,13 +45,16 @@ public class TripServiceImpl implements TripService{
     }
 
     @Override
-    public Trip saveTrip(Trip trip, Long user_id) {
+    public Trip saveTrip(TripRequest tripRequest, Long user_id) {
         // ! place to come back and fix 
         // ! with every new trip we are creating new rider
         Rider rider = new Rider("riderOne@example.com",Gender.MALE);
+        User user = userService.getUser(user_id);
+
+        Trip trip = new Trip(tripRequest);
+
         trip.setRider(riderService.saveRider(rider));
         
-        User user = userService.getUser(user_id);
         trip.setUser(user);
        return  tripRepo.save(trip);
     }
