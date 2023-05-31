@@ -8,13 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.repository.RiderRepository;
+import com.zicna_inc.tnp_1099.request.RiderRequest;
 @Service
 public class RiderServiceImpl implements RiderService{
 
     @Autowired
     RiderRepository riderRepo;
 
-    public Rider saveRider(Rider rider){
+    public Rider saveRider(RiderRequest riderRequest){
+        Rider rider = new Rider(riderRequest);
         return riderRepo.save(rider);
     }
 

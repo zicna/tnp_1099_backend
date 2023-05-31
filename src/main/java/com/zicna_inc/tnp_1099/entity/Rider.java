@@ -2,6 +2,7 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zicna_inc.tnp_1099.request.RiderRequest;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,6 +39,10 @@ public class Rider {
     public Rider(String email, Gender gender) {
         this.email = email;
         this.gender = gender;
+    }
+    public Rider(RiderRequest source) {
+        this.email = source.getEmail();
+        this.gender = source.getGender();
     }
 
     public Long getId() {
