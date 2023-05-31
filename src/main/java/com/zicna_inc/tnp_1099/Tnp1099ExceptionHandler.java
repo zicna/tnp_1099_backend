@@ -3,15 +3,11 @@ package com.zicna_inc.tnp_1099;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.catalina.connector.Response;
-import org.hibernate.annotations.SourceType;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.zicna_inc.tnp_1099.exceptions.NoUserException;
 import com.zicna_inc.tnp_1099.exceptions.WrongCarInputExc;
@@ -65,10 +61,10 @@ public class Tnp1099ExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(WrongCarInputExc.class)
-    public ResponseEntity<Object> wrongCarInput(WrongCarInputExc ex) {
-        ErrorResponse error = new ErrorResponse(ex.getLocalizedMessage());
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
+    // @ExceptionHandler(WrongCarInputExc.class)
+    // public ResponseEntity<Object> wrongCarInput(WrongCarInputExc ex) {
+    //     ErrorResponse error = new ErrorResponse(ex.getLocalizedMessage());
+    //     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    // }
 
 }
