@@ -2,6 +2,8 @@ package com.zicna_inc.tnp_1099.entity;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.zicna_inc.tnp_1099.request.CarRequest;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,24 +23,23 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
     @Column
     @NotBlank
     private String make;
-    
+
     @Column
     @NotBlank
     private String model;
 
     @Column(name = "year")
     @NotNull
-    @Range(min=2000)
+    @Range(min = 2000)
     private Integer year;
-    
+
     @Column
     @NotBlank
     private String vin;
-    
+
     @Column
     @NotBlank
     private String color;
@@ -60,6 +61,15 @@ public class Car {
         this.vin = vin;
         this.color = color;
         this.type = type;
+    }
+
+    public Car(CarRequest source) {
+        this.make = source.getMake();
+        this.model = source.getModel();
+        this.year = source.getYear();
+        this.vin = source.getVin();
+        this.color = source.getColor();
+        this.type = source.getType();
     }
 
     public Long getId() {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zicna_inc.tnp_1099.entity.Car;
 import com.zicna_inc.tnp_1099.exceptions.WrongCarInputExc;
+import com.zicna_inc.tnp_1099.request.CarRequest;
 import com.zicna_inc.tnp_1099.service.CarService;
 
 import jakarta.validation.Valid;
@@ -25,9 +26,9 @@ public class CarController {
     CarService carService;
 
     @PostMapping(value="/user/{user_id}/car")
-    public ResponseEntity<Car> saveCar(@Valid @RequestBody Car car, BindingResult result, @PathVariable Long user_id) {
+    public ResponseEntity<Car> saveCar(@Valid @RequestBody CarRequest carRequest, BindingResult result, @PathVariable Long user_id) {
         if(result.hasErrors()) throw new WrongCarInputExc((result));
-        return new ResponseEntity<>(carService.saveCar(car, user_id), HttpStatus.OK);
+        return new ResponseEntity<>(carService.saveCar(carRequest, user_id), HttpStatus.OK);
     }
 
 }
