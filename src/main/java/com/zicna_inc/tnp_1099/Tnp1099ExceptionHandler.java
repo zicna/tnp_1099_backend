@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.zicna_inc.tnp_1099.exceptions.NoUserException;
-import com.zicna_inc.tnp_1099.exceptions.WrongCarInputExc;
-import com.zicna_inc.tnp_1099.exceptions.WrongUserInputExc;
 import com.zicna_inc.tnp_1099.exceptions.NoRiderException;
 import com.zicna_inc.tnp_1099.exceptions.NoTripException;
 import com.zicna_inc.tnp_1099.exceptions.NoExpenseException;

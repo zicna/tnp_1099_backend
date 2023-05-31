@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User updateUser(Long id, User user) {
         Optional<User> optUser = userRepository.findById(id);
-        User oldUser = unwrapUser(optUser, id);
+        unwrapUser(optUser, id);
         return userRepository.save(user);
     }
 

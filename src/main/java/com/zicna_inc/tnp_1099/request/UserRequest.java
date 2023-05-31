@@ -5,7 +5,6 @@ import java.util.Date;
 import com.zicna_inc.tnp_1099.enums.Gender;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 // TODO: add custom validation for date_of_birth and gender
 public class UserRequest {
