@@ -1,6 +1,7 @@
 package com.zicna_inc.tnp_1099.exceptions;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.validation.BindingResult;
 
@@ -15,8 +16,8 @@ public class WrongCarInputExc extends RuntimeException {
         this.errors = errors;
     }
 
-    public  HashMap<String, String> getValidationMessage() {
-        HashMap<String, String> errorsMap = new HashMap<String, String>();
+    public  Map<String, String> getValidationMessage() {
+        Map<String, String> errorsMap = new HashMap<String, String>();
         errors.getFieldErrors().forEach(err -> {
             errorsMap.put(err.getField(), err.getDefaultMessage());
         });

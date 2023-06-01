@@ -1,6 +1,6 @@
 package com.zicna_inc.tnp_1099.exception_handlers;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,7 @@ import com.zicna_inc.tnp_1099.exceptions.WrongRiderInputExc;
 public class RiderExceptionHandler {
 
     @ExceptionHandler(WrongRiderInputExc.class)
-    public ResponseEntity<HashMap<String, String>> handleWrongRiderInput(WrongRiderInputExc ex) {
+    public ResponseEntity<Map<String, String>> handleWrongRiderInput(WrongRiderInputExc ex) {
         return new ResponseEntity<>(ex.getValidationMessage(), HttpStatus.BAD_REQUEST);
     }
-
 }

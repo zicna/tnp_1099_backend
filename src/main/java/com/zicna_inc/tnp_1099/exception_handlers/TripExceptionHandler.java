@@ -1,6 +1,5 @@
 package com.zicna_inc.tnp_1099.exception_handlers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
