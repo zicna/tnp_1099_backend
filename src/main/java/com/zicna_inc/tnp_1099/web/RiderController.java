@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zicna_inc.tnp_1099.entity.Rider;
+import com.zicna_inc.tnp_1099.exceptions.WrongRiderInputExc;
 import com.zicna_inc.tnp_1099.request.RiderRequest;
 import com.zicna_inc.tnp_1099.service.RiderService;
 
@@ -30,7 +31,7 @@ public class RiderController {
     @PostMapping("/rider")
     public ResponseEntity<Rider> addRider(@RequestBody @Valid RiderRequest riderRequest, BindingResult result) {
         if (result.hasErrors())
-            throw new RuntimeErrorException(null, null);
+            throw new WrongRiderInputExc(result);
         return new ResponseEntity<>(riderService.saveRider(riderRequest), HttpStatus.CREATED);
     }
 

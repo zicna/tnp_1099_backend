@@ -3,9 +3,12 @@ package com.zicna_inc.tnp_1099.request;
 import com.zicna_inc.tnp_1099.enums.Gender;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 // TODO: add custom validation for gender field (Gender Enum)
+import jakarta.validation.constraints.NotNull;
 
 public class RiderRequest {
+    @NotBlank(message = "email must be valid")
     @Email(message = "email must be valid")
     private String email;
     private Gender gender;
