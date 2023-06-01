@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zicna_inc.tnp_1099.entity.Trip;
+import com.zicna_inc.tnp_1099.exceptions.WrongTripInputExc;
 import com.zicna_inc.tnp_1099.request.TripRequest;
 import com.zicna_inc.tnp_1099.service.TripService;
 
 import jakarta.validation.Valid;
 
-// TODO: create new Exception for wrong Trip input and use it in post request
 
 @RestController
 public class TripController {
@@ -35,7 +35,7 @@ public class TripController {
     public ResponseEntity<Trip> addTrip(@RequestBody @Valid TripRequest tripRequest, BindingResult result,
             @PathVariable Long id) {
         if (result.hasErrors())
-            throw new RuntimeException();
+            throw new WrongTripInputExc(result);
         return new ResponseEntity<>(tripService.saveTrip(tripRequest, id), HttpStatus.CREATED);
     }
 

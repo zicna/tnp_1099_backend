@@ -15,17 +15,16 @@ import jakarta.persistence.ManyToOne;
 
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 // @DiscriminatorColumn(
-    //     name="PLATFORM",
-    //     discriminatorType= DiscriminatorType.STRING
-    // )
+//     name="PLATFORM",
+//     discriminatorType= DiscriminatorType.STRING
+// )
 // TODO  add method to alter Trip
 // TODO  add method to delete Trip
 // TODO  implement many-to-many with new entity
 
 // TODO: Posible new fields: 1.AR(account Receivable), 2. AP(account payable)
 
-
-    @Entity
+@Entity
 public class Trip {
 
     @Id
@@ -33,35 +32,33 @@ public class Trip {
     private Long id;
 
     @Column
-    private  Long distance;
+    private Double distance;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private  Platform platform;
+    private Platform platform;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="user_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="rider_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "rider_id")
     private Rider rider;
 
-
-    public Trip(Long id, Long distance, Platform platform, User user, Rider rider) {
-        this.id = id;
+    public Trip(Double distance, Platform platform, User user, Rider rider) {
         this.distance = distance;
         this.platform = platform;
         this.user = user;
         this.rider = rider;
     }
 
-    public Trip(){};
+    public Trip() {
+    };
 
-    public Trip(TripRequest source){
+    public Trip(TripRequest source) {
         this.distance = source.getDistance();
         this.platform = source.getPlatform();
     }
-    
 
     public User getUser() {
         return this.user;
@@ -83,11 +80,11 @@ public class Trip {
         return this.id;
     }
 
-    public Long getDistance() {
+    public Double getDistance() {
         return this.distance;
     }
 
-    public Platform getPlatform(){
+    public Platform getPlatform() {
         return this.platform;
     }
 
