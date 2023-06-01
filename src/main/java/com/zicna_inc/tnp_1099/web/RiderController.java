@@ -20,7 +20,6 @@ import com.zicna_inc.tnp_1099.service.RiderService;
 
 import jakarta.validation.Valid;
 
-// TODO: create new Exception for wrong Rider input and use it in post request
 
 @RestController
 public class RiderController {
