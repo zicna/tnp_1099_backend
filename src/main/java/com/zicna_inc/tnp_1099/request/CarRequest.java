@@ -1,6 +1,6 @@
 package com.zicna_inc.tnp_1099.request;
 
-import com.zicna_inc.tnp_1099.enums.UberType;
+import com.zicna_inc.tnp_1099.enums.TNPtype;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -18,9 +18,9 @@ public class CarRequest {
     private String vin;
     @NotBlank(message = "color can not be blank")
     private String color;
-    private UberType type;
+    private TNPtype type;
 
-    public CarRequest(String make, String model, Integer year, String vin, String color, UberType type) {
+    public CarRequest(String make, String model, Integer year, String vin, String color, TNPtype type) {
         this.make = make;
         this.model = model;
         this.year = year;
@@ -69,11 +69,11 @@ public class CarRequest {
         this.color = color;
     }
 
-    public UberType getType() {
+    public TNPtype getType() {
         return this.type;
     }
 
-    public void setType(UberType type) {
+    public void setType(TNPtype type) {
         this.type = type;
     }
 

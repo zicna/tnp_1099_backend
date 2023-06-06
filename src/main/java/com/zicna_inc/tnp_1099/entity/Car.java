@@ -1,7 +1,6 @@
 package com.zicna_inc.tnp_1099.entity;
 
-
-import com.zicna_inc.tnp_1099.enums.UberType;
+import com.zicna_inc.tnp_1099.enums.TNPtype;
 import com.zicna_inc.tnp_1099.request.CarRequest;
 
 import jakarta.persistence.Column;
@@ -35,9 +34,10 @@ public class Car {
 
     @Column
     private String color;
-    @Column(name = "uber_type")
+
+    @Column(name = "tnp_type")
     @Enumerated(value = EnumType.STRING)
-    private UberType type;
+    private TNPtype type;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -46,7 +46,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String make, String model, Integer year, String vin, String color, UberType type) {
+    public Car(String make, String model, Integer year, String vin, String color, TNPtype type) {
         this.make = make;
         this.model = model;
         this.year = year;
@@ -108,11 +108,11 @@ public class Car {
         this.color = color;
     }
 
-    public UberType getType() {
+    public TNPtype getType() {
         return this.type;
     }
 
-    public void setType(UberType type) {
+    public void setType(TNPtype type) {
         this.type = type;
     }
 
@@ -141,7 +141,7 @@ public class Car {
         return this;
     }
 
-    public Car type(UberType type) {
+    public Car type(TNPtype type) {
         setType(type);
         return this;
     }
