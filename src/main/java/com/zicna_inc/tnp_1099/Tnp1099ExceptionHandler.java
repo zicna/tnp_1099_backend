@@ -15,6 +15,8 @@ import com.zicna_inc.tnp_1099.exceptions.NoTripException;
 import com.zicna_inc.tnp_1099.exceptions.NoExpenseException;
 import com.zicna_inc.tnp_1099.exceptions.ErrorResponse;
 
+// TODO: Move exception handler methods in specific controller adice classes  
+
 @ControllerAdvice
 public class Tnp1099ExceptionHandler {
 
