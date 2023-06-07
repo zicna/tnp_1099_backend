@@ -20,8 +20,7 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Enumerated(value = EnumType.STRING)
+    @Column(name = "expense_type")
     private String type;
     @Column
     private Double amount;
