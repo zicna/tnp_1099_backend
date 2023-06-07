@@ -7,14 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.zicna_inc.tnp_1099.entity.Trip;
 import com.zicna_inc.tnp_1099.entity.User;
-import com.zicna_inc.tnp_1099.enums.Gender;
 import com.zicna_inc.tnp_1099.exceptions.NoTripException;
 import com.zicna_inc.tnp_1099.entity.Rider;
 import com.zicna_inc.tnp_1099.repository.TripRepository;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
 import com.zicna_inc.tnp_1099.request.TripRequest;
 import com.zicna_inc.tnp_1099.repository.RiderRepository;
-// import com.zicna_inc.tnp_1099.service.RiderService;
 
 @Service
 public class TripServiceImpl implements TripService{
@@ -46,9 +44,9 @@ public class TripServiceImpl implements TripService{
 
     @Override
     public Trip saveTrip(TripRequest tripRequest, Long user_id) {
-        // ! place to come back and fix 
-        // ! with every new trip we are creating new rider
-        Rider rider = new Rider("riderOne@example.com",Gender.MALE);
+        // TODO: ! place to come back and fix 
+        // TODO: ! with every new trip we are creating new rider
+        Rider rider = new Rider("riderOne@example.com","MALE");
         User user = userService.getUser(user_id);
 
         Trip trip = new Trip(tripRequest);
