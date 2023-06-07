@@ -2,7 +2,6 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Date;
 
-import com.zicna_inc.tnp_1099.enums.ExpenseType;
 import com.zicna_inc.tnp_1099.request.ExpenseRequest;
 
 import jakarta.persistence.Column;
@@ -23,7 +22,7 @@ public class Expense {
     private Long id;
 
     @Enumerated(value = EnumType.STRING)
-    private ExpenseType type;
+    private String type;
     @Column
     private Double amount;
     @Column
@@ -38,7 +37,7 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(Long id, ExpenseType type, Double amount, String description) {
+    public Expense(Long id, String type, Double amount, String description) {
         this.id = id;
         this.type = type;
         this.amount = amount;
@@ -69,11 +68,11 @@ public class Expense {
         this.id = id;
     }
 
-    public ExpenseType getType() {
+    public String getType() {
         return this.type;
     }
 
-    public void setType(ExpenseType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -106,7 +105,7 @@ public class Expense {
         return this;
     }
 
-    public Expense type(ExpenseType type) {
+    public Expense type(String type) {
         setType(type);
         return this;
     }

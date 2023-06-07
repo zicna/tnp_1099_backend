@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.zicna_inc.tnp_1099.enums.Gender;
+import com.zicna_inc.tnp_1099.validation.ValidateGender;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -18,7 +18,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-// TODO  add a validations
 
 @Entity
 @Table(name = "users")
@@ -35,7 +34,8 @@ public class User {
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    private Gender gender;
+    @ValidateGender
+    private String gender;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -52,7 +52,7 @@ public class User {
     public User() {
     }
 
-    public User(String email, Date date_of_birth, Gender gender) {
+    public User(String email, Date date_of_birth, String gender) {
         this.email = email;
         this.date_of_birth = date_of_birth;
         this.gender = gender;
@@ -82,11 +82,11 @@ public class User {
         this.date_of_birth = date_of_birth;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return this.gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

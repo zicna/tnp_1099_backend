@@ -2,14 +2,13 @@ package com.zicna_inc.tnp_1099.request;
 
 import java.util.Date;
 
-import com.zicna_inc.tnp_1099.enums.ExpenseType;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
+// TODO: Add custom validation for field "type"
 public class ExpenseRequest {
-    private ExpenseType type;
+    private String type;
     @Min(value = 0, message = "amount must exist and can not be less then 0")
     @NotNull(message = "amount must exist and can not be less then 0")
     private Double amount;
@@ -20,18 +19,18 @@ public class ExpenseRequest {
     public ExpenseRequest() {
     }
 
-    public ExpenseRequest(ExpenseType type, Double amount, Date date, String description) {
+    public ExpenseRequest(String type, Double amount, Date date, String description) {
         this.type = type;
         this.amount = amount;
         this.date = date;
         this.description = description;
     }
 
-    public ExpenseType getType() {
+    public String getType() {
         return this.type;
     }
 
-    public void setType(ExpenseType type) {
+    public void setType(String type) {
         this.type = type;
     }
 

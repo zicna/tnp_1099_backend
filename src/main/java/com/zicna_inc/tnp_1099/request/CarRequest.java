@@ -1,10 +1,11 @@
 package com.zicna_inc.tnp_1099.request;
 
-import com.zicna_inc.tnp_1099.enums.TNPtype;
-
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+// TODO: Add custom validation for field "type"
+
 
 public class CarRequest {
     @NotBlank(message = "make can not be blank")
@@ -18,15 +19,18 @@ public class CarRequest {
     private String vin;
     @NotBlank(message = "color can not be blank")
     private String color;
-    private TNPtype type;
+    private String type;
 
-    public CarRequest(String make, String model, Integer year, String vin, String color, TNPtype type) {
+    public CarRequest(String make, String model, Integer year, String vin, String color, String type) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.vin = vin;
         this.color = color;
         this.type = type;
+    }
+
+    public CarRequest() {
     }
 
     public String getMake() {
@@ -69,11 +73,11 @@ public class CarRequest {
         this.color = color;
     }
 
-    public TNPtype getType() {
+    public String getType() {
         return this.type;
     }
 
-    public void setType(TNPtype type) {
+    public void setType(String type) {
         this.type = type;
     }
 

@@ -2,7 +2,6 @@ package com.zicna_inc.tnp_1099.entity;
 
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.zicna_inc.tnp_1099.enums.Gender;
 import com.zicna_inc.tnp_1099.request.RiderRequest;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +26,7 @@ public class Rider {
     private String email;
     @Column
     @Enumerated(value= EnumType.STRING)
-    private Gender gender;
+    private String gender;
 
     @JsonIgnore
     @OneToMany(mappedBy="rider", cascade=CascadeType.ALL)
@@ -37,7 +36,7 @@ public class Rider {
     public Rider() {
     }
 
-    public Rider(String email, Gender gender) {
+    public Rider(String email, String gender) {
         this.email = email;
         this.gender = gender;
     }
@@ -62,11 +61,11 @@ public class Rider {
         this.email = email;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return this.gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

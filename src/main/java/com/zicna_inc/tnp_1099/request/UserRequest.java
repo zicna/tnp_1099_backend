@@ -2,7 +2,6 @@ package com.zicna_inc.tnp_1099.request;
 
 import java.util.Date;
 
-import com.zicna_inc.tnp_1099.enums.Gender;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Past;
@@ -12,12 +11,12 @@ public class UserRequest {
     private String email;
     @Past(message = "date of birth must be in past")
     private Date date_of_birth;
-    private Gender gender;
+    private String gender;
 
     public UserRequest() {
     }
 
-    public UserRequest(String email, Date date_of_birth, Gender gender) {
+    public UserRequest(String email, Date date_of_birth, String gender) {
         this.email = email;
         this.date_of_birth = date_of_birth;
         this.gender = gender;
@@ -39,11 +38,11 @@ public class UserRequest {
         this.date_of_birth = date_of_birth;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return this.gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -57,7 +56,7 @@ public class UserRequest {
         return this;
     }
 
-    public UserRequest gender(Gender gender) {
+    public UserRequest gender(String gender) {
         setGender(gender);
         return this;
     }

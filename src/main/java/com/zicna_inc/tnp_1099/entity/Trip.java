@@ -1,6 +1,5 @@
 package com.zicna_inc.tnp_1099.entity;
 
-import com.zicna_inc.tnp_1099.enums.Platform;
 import com.zicna_inc.tnp_1099.request.TripRequest;
 
 import jakarta.persistence.Column;
@@ -35,7 +34,7 @@ public class Trip {
     private Double distance;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private Platform platform;
+    private String platform;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
@@ -45,7 +44,7 @@ public class Trip {
     @JoinColumn(name = "rider_id")
     private Rider rider;
 
-    public Trip(Double distance, Platform platform, User user, Rider rider) {
+    public Trip(Double distance, String platform, User user, Rider rider) {
         this.distance = distance;
         this.platform = platform;
         this.user = user;
@@ -84,7 +83,7 @@ public class Trip {
         return this.distance;
     }
 
-    public Platform getPlatform() {
+    public String getPlatform() {
         return this.platform;
     }
 
