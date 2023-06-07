@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zicna_inc.tnp_1099.entity.User;
+import com.zicna_inc.tnp_1099.exceptions.WrongUserInputExc;
 import com.zicna_inc.tnp_1099.request.UserRequest;
 import com.zicna_inc.tnp_1099.service.ExpenseService;
 import com.zicna_inc.tnp_1099.service.UserService;
@@ -49,7 +51,8 @@ public class UserController {
     // }
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/user")
-    public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest userRequest) {
+    public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest userRequest, BindingResult result) {
+       if(result.hasErrors()) throw new WrongUserInputExc(result);
         return new ResponseEntity<>(userService.saveUser(userRequest),
                 HttpStatus.CREATED);
     }

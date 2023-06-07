@@ -25,6 +25,7 @@ public class CarController {
 
     @PostMapping(value="/user/{user_id}/car")
     public ResponseEntity<Car> saveCar(@Valid @RequestBody CarRequest carRequest, BindingResult result, @PathVariable Long user_id) {
+        System.out.println(carRequest);
         if(result.hasErrors()) throw new WrongCarInputExc((result));
         return new ResponseEntity<>(carService.saveCar(carRequest, user_id), HttpStatus.OK);
     }

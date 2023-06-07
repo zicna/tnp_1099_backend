@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.zicna_inc.tnp_1099.exceptions.NoUserException;
+import com.zicna_inc.tnp_1099.exceptions.WrongUserInputExc;
 import com.zicna_inc.tnp_1099.exceptions.NoRiderException;
 import com.zicna_inc.tnp_1099.exceptions.NoTripException;
 import com.zicna_inc.tnp_1099.exceptions.NoExpenseException;
@@ -27,21 +28,21 @@ public class Tnp1099ExceptionHandler {
     }
 
     // ! Old method for handling wrong user Input
-    // @ExceptionHandler(WrongUserInputExc.class)
-    // public ResponseEntity<Object> wrongInput(WrongUserInputExc ex) {
+    @ExceptionHandler(WrongUserInputExc.class)
+    public ResponseEntity<Map<String, String>> wrongInput(WrongUserInputExc ex) {
     // ErrorResponse error = new ErrorResponse(ex.getLocalizedMessage());
-    // return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    // }
+    return new ResponseEntity<>(ex.getErrors(), HttpStatus.BAD_REQUEST);
+    }
 
     // ! New method for handling wrong user Input by handling MethodArgumentNotValidException exception
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleWrongUserInput(MethodArgumentNotValidException ex) {
-        Map<String, String> errorsMap = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(err -> {
-            errorsMap.put(err.getField(), err.getDefaultMessage());
-        });
-        return new ResponseEntity<>(errorsMap, HttpStatus.BAD_REQUEST);
-    }
+    // @ExceptionHandler(MethodArgumentNotValidException.class)
+    // public ResponseEntity<Map<String, String>> handleWrongUserInput(MethodArgumentNotValidException ex) {
+    //     Map<String, String> errorsMap = new HashMap<>();
+    //     ex.getBindingResult().getFieldErrors().forEach(err -> {
+    //         errorsMap.put(err.getField(), err.getDefaultMessage());
+    //     });
+    //     return new ResponseEntity<>(errorsMap, HttpStatus.BAD_REQUEST);
+    // }
 
     @ExceptionHandler(NoRiderException.class)
     public ResponseEntity<Object> noRiderFound(NoRiderException ex) {

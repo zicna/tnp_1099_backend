@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.zicna_inc.tnp_1099.validation.ValidateGender;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -34,7 +33,6 @@ public class User {
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    @ValidateGender
     private String gender;
 
     @JsonIgnore

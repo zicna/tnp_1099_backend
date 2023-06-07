@@ -6,12 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.zicna_inc.tnp_1099.entity.User;
-import com.zicna_inc.tnp_1099.enums.Gender;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
 
 @SpringBootApplication
@@ -29,7 +25,7 @@ public class Tnp1099Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User dummyUser = new User("ruby_master@example.com", new Date(), Gender.FEMALE);
+		User dummyUser = new User("ruby_master@example.com", new Date(), "FEMALE");
 		userRepo.save(dummyUser);
 	}
 }
