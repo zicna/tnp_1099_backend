@@ -12,6 +12,7 @@ import jakarta.validation.constraints.NotNull;
 // TODO: add custom exception for wrong expense input
 
 public class ExpenseRequest {
+    @NotBlank(message = "Expense type must be present")
     @CustomTypeValidation(acceptedTypes = { "GAS", "WASH", "TOLL", "REPAIR", "MISCELLANEOUS",
             "TICKET" }, message = "Expense type must be one of: GAS, WASH, TOLL, REPAIR, MISCELLANEOUS, TICKET")
     private String type;
