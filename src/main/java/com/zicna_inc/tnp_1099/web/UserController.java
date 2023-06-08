@@ -35,24 +35,11 @@ public class UserController {
     @Autowired
     ExpenseService expenseService;
 
-    // TODO: alter WrongUserInputExc.java to get specific error message based of
-    // field that failed validation
-    // TODO: add new UserRequest Entity for validation()
-
-    // ! Old way handeling Exception with custom exception and BindingResult
-    // @CrossOrigin(origins = "http://localhost:3000")
-    // @PostMapping("/user")
-    // public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest
-    // userRequest, BindingResult result) {
-    // if (result.hasErrors())
-    // throw new WrongUserInputExc();
-    // return new ResponseEntity<>(userService.saveUser(userRequest),
-    // HttpStatus.CREATED);
-    // }
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/user")
     public ResponseEntity<User> saveUser(@Valid @RequestBody UserRequest userRequest, BindingResult result) {
-       if(result.hasErrors()) throw new WrongUserInputExc(result);
+        if (result.hasErrors())
+            throw new WrongUserInputExc(result);
         return new ResponseEntity<>(userService.saveUser(userRequest),
                 HttpStatus.CREATED);
     }

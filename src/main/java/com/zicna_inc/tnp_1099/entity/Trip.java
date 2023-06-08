@@ -17,7 +17,6 @@ import jakarta.persistence.ManyToOne;
 // )
 // TODO  add method to alter Trip
 // TODO  add method to delete Trip
-// TODO  implement many-to-many with new entity
 
 // TODO: Posible new fields: 1.AR(account Receivable), 2. AP(account payable)
 

@@ -2,15 +2,18 @@ package com.zicna_inc.tnp_1099.request;
 
 import java.util.Date;
 
+import com.zicna_inc.tnp_1099.validation.CustomTypeValidation;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Past;
-// TODO: add custom validation for date_of_birth and gender
+
+// TODO: add custom validation for date_of_birth
 public class UserRequest {
     @Email(message = "must be valid email")
     private String email;
     @Past(message = "date of birth must be in past")
     private Date date_of_birth;
+    @CustomTypeValidation(acceptedTypes = { "MALE", "FEMALE", "OTHER" }, message = "Gender must be one of: MALE, FEMALE, OTHER")
     private String gender;
 
     public UserRequest() {

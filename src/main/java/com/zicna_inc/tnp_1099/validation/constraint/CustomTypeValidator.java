@@ -7,7 +7,6 @@ import jakarta.validation.ConstraintValidatorContext;
 
 import java.util.ArrayList;
 import java.util.List;
-// import java.util.stream.Stream;
 
 public class CustomTypeValidator implements ConstraintValidator<CustomTypeValidation, String> {
 
@@ -17,14 +16,13 @@ public class CustomTypeValidator implements ConstraintValidator<CustomTypeValida
     public void initialize(CustomTypeValidation constraintAnnotation) {
 
         acceptedValues = new ArrayList<>();
-        for(String val : constraintAnnotation.acceptedTypes()){
+        for (String val : constraintAnnotation.acceptedTypes()) {
             acceptedValues.add(val);
         }
     }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        // TODO Auto-generated method stub
         return acceptedValues.contains(value);
     }
 }

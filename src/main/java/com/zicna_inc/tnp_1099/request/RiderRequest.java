@@ -5,7 +5,6 @@ import com.zicna_inc.tnp_1099.validation.CustomTypeValidation;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-// TODO: add custom validation for gender field 
 
 public class RiderRequest {
     @NotBlank(message = "email must be valid")

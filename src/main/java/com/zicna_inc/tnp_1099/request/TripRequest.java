@@ -6,10 +6,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-// TODO: add custom validation for platform field 
-
 public class TripRequest {
-    // @NotBlank(message = "distance can not be blank")
     @Min(0)
     @NotNull(message = "trip distance must be present")
     private Double distance;
