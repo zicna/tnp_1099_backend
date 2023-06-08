@@ -1,6 +1,6 @@
 package com.zicna_inc.tnp_1099.request;
 
-import com.zicna_inc.tnp_1099.validation.CarTypeValidation;
+import com.zicna_inc.tnp_1099.validation.CustomTypeValidation;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -22,7 +22,7 @@ public class CarRequest {
     @NotBlank(message = "color can not be blank")
     private String color;
     @NotBlank(message = "car must have  tnp type")
-    @CarTypeValidation(acceptedTypes={"X", "XL", "COMFORT", "EL", "LYMO"})
+    @CustomTypeValidation(acceptedTypes={"X", "XL", "COMFORT", "EL", "LYMO"}, message = "Car Type must be one from the list: X, XL, COMFORT, EL, LYMO")
     private String type;
 
     public CarRequest(String make, String model, Integer year, String vin, String color, String type) {
