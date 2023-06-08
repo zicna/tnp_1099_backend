@@ -1,6 +1,7 @@
 package com.zicna_inc.tnp_1099.web;
 
 import com.zicna_inc.tnp_1099.entity.Expense;
+import com.zicna_inc.tnp_1099.exceptions.WrongExpenseInputExc;
 import com.zicna_inc.tnp_1099.request.ExpenseRequest;
 import com.zicna_inc.tnp_1099.service.ExpenseService;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -28,7 +30,8 @@ public class ExpenseController {
     ExpenseService expenseService;
 
     @PostMapping("/user/{user_id}/expense")
-    public ResponseEntity<Expense> saveExpense(@RequestBody @Valid ExpenseRequest expenseRequest, @PathVariable Long user_id){
+    public ResponseEntity<Expense> saveExpense(@RequestBody @Valid ExpenseRequest expenseRequest, BindingResult result, @PathVariable Long user_id){
+        if(result.hasErrors()) throw new WrongExpenseInputExc(result);
         return new ResponseEntity<>(expenseService.saveExpense(expenseRequest, user_id), HttpStatus.CREATED);
     }
 

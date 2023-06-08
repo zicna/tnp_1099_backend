@@ -8,8 +8,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-// TODO: Add custom validation for field "type"
-// TODO: add custom exception for wrong expense input
 
 public class ExpenseRequest {
     @NotBlank(message = "Expense type must be present")
