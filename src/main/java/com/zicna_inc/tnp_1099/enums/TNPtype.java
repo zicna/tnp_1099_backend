@@ -1,6 +1,5 @@
 package com.zicna_inc.tnp_1099.enums;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum TNPtype {
     // @JsonProperty("X")

@@ -1,6 +1,5 @@
 package com.zicna_inc.tnp_1099.web;
 
-import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
