@@ -20,7 +20,7 @@ public @interface CustomTypeValidation {
 
     public String[] acceptedTypes();
 
-    String message() default "Car Type must be one from the list: X, XL, COMFORT, EL, LYMO";
+    String message() default "default error message ";
 
     Class<?>[] groups() default {};
 
