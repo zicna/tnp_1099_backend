@@ -10,6 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.zicna_inc.tnp_1099.entity.User;
 import com.zicna_inc.tnp_1099.repository.UserRepository;
 
+
+// TODO: CHECK ALL ENDPOINTS, FIND AND FIX LOOSE LINKS
+// TODO: CROS ORIGIN for whole app (not just certain controllers and methods)
+// TODO: WRITE TEST
+// TODO: 
+// TODO: 
 @SpringBootApplication
 // @ComponentScan(value = "com.zicna_inc.tnp_1099.*")
 // @EntityScan("com.zicna_inc.tnp_1099.entity")
