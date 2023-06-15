@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zicna_inc.tnp_1099.request.UserRequest;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -51,6 +52,11 @@ public class User {
         this.email = email;
         this.date_of_birth = date_of_birth;
         this.gender = gender;
+    }
+    public User(UserRequest source) {
+        this.email = source.getEmail();
+        this.date_of_birth = source.getDate_of_birth();
+        this.gender = source.getGender();
     }
 
     public Long getId() {
